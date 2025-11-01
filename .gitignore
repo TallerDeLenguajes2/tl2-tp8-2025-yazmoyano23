@@ -1,0 +1,58 @@
+# Build results
+bin/
+obj/
+
+# .NET Core specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ASP.NET Scaffolding
+Scaffolding/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Auto-generated files
+*.sln.ide
+.vscode/launch.json
+.vscode/tasks.json
+
+# Mac files
+.DS_Store
+
+# Windows image file caches
+Thumbs.db
+
+# .NET Core Configuration
+appsettings.Development.json
+appsettings.Production.json
+
+# Logs and database files
+*.log
+*.sqlite
+
+# Visual Studio Code specific
+.vscode/
+.vscode/*
+
+# NPM packages and lock files (if applicable)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Entity Framework Migrations
+Migrations/
+
+# Azure Functions local settings
+local.settings.json
+
+# Other files
+*.vs/
+*.sln.iml
+.idea/
+TLII - 2024 - TP06.pdf
