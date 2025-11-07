@@ -1,4 +1,4 @@
-@model Productos
+@model tp8.ViewModels.ProductoViewModel
 
 <div class="container mt-4">
     <h2>Agregar Producto</h2>
@@ -19,3 +19,5 @@
         <a asp-action="Index" class="btn btn-secondary">Volver</a>
     </form>
 </div>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

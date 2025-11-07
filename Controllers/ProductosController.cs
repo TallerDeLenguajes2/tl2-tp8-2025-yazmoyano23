@@ -3,6 +3,8 @@ using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using tp8.Models;
 
+using tp8.ViewModels;
+
 
 namespace tp8.Controllers;
 
@@ -28,17 +30,23 @@ public class ProductosController : Controller
     }
 
     [HttpPost]
-    public IActionResult Create(Productos nuevoProducto)
+    public IActionResult Create(ProductoViewModel vm)
     {
-        if (ModelState.IsValid)
+        if (!ModelState.IsValid)
         {
-            // Si el modelo es válido, lo guardamos
-            productoRepository.InsertarProducto(nuevoProducto);
-            return RedirectToAction("Index");
+            return View(vm);
         }
 
-        // Si no es válido, volvemos a mostrar el formulario con los errores
-        return View(nuevoProducto);
+        Productos nuevoProducto = new Productos
+        {
+            Descripcion = vm.Descripcion,
+            Precio = vm.Precio
+        };
+
+
+        productoRepository.InsertarProducto(nuevoProducto);
+
+        return RedirectToAction("Index");
     }
 
     [HttpGet]
