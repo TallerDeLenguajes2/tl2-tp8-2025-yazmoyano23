@@ -1,0 +1,23 @@
+@model tp8.ViewModels.PresupuestoViewModel
+
+<div class="container mt-4">
+    <h2>Agregar Presupuesto</h2>
+    <form asp-action="Create" method="post">
+        <div class="form-group mb-3">
+            <label asp-for="NombreDestinatario" class="form-label"></label>
+            <input asp-for="NombreDestinatario" class="form-control" />
+            <span asp-validation-for="NombreDestinatario" class="text-danger"></span>
+        </div>
+
+    <div class="form-group">
+        <label asp-for="FechaCreacion">Fecha</label>
+        <input asp-for="FechaCreacion" class="form-control" type="datetime-local"
+        value="@DateTime.Now.ToString("yyyy-MM-ddTHH:mm")" />
+    </div>
+
+        <button type="submit" class="btn btn-primary mt-3" >Guardar</button>
+        <a asp-action="Index" class="btn btn-secondary mt-3">Volver</a>
+    </form>
+</div>
+
+@section Scripts { <partial name="_ValidationScriptsPartial" /> }

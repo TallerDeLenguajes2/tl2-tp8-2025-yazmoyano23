@@ -35,9 +35,10 @@ public class ProductoRepository
                 }
 
                 return productos;
+                conexion.Close();
             }
 
-            conexion.Close();
+            
         }
     }
 

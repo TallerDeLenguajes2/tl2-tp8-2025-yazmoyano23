@@ -53,15 +53,35 @@ public class ProductosController : Controller
     public IActionResult Edit(int id)
     {
         var prod = productoRepository.GetByID(id);
-        return View(prod);
+        if (prod == null)
+        return NotFound();
 
+        ProductoViewModel productoVM = new ProductoViewModel
+        {
+            IdProducto = prod.IdProducto,
+            Descripcion = prod.Descripcion,
+            Precio = prod.Precio
+        };
 
+        return View(productoVM);
     }
 
     [HttpPost]
-    public IActionResult Edit(Productos producto)
+    public IActionResult Edit(int id, ProductoViewModel productoVM)
     {
-        productoRepository.ModificarProducto(producto);
+        if (id != productoVM.IdProducto) return NotFound();
+        if (!ModelState.IsValid)
+        {
+            return View(productoVM);
+        }
+
+        Productos productoAEditar = new Productos
+        {
+            IdProducto = productoVM.IdProducto,
+            Descripcion = productoVM.Descripcion,
+            Precio = productoVM.Precio
+        };
+        productoRepository.ModificarProducto(productoAEditar);
         return RedirectToAction("Index");
 
     }
@@ -79,5 +99,7 @@ public class ProductosController : Controller
         productoRepository.Eliminar(producto);
         return RedirectToAction("Index");
     }
+
+    
 
 }

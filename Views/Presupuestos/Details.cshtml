@@ -31,3 +31,13 @@
         }
     </tbody>
 </table>
+
+<p> <strong>Cantidad de Productos:</strong> @Model.CantidadProductos()</p>
+<p><strong>Total: </strong> $ @Model.MontoPresupuesto()</p>
+<p><strong>Total (CON IVA):</strong> $ @Model.MontoPresupuestoConIva()</p>
+
+
+<div class="mt-3 d-flex align-items-center gap-2">
+    <a asp-action="AgregarProducto"  asp-route-id="@Model.IdPresupuesto" class="btn btn-success">Agregar producto</a>
+    <a asp-action="Index" class="btn btn-secondary">Volver</a>
+</div>
