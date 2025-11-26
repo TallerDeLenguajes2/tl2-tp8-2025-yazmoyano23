@@ -151,4 +151,11 @@ public class PresupuestosController : Controller
         return RedirectToAction("Index");
 
     }
+
+    public IActionResult QuitarProducto(int idPresupuesto, int idProducto)
+    {
+        presupuestoRepository.EliminarProductoDeDetalle(idPresupuesto, idProducto);
+
+        return RedirectToAction("Details", new { id = idPresupuesto });
+    }
 }

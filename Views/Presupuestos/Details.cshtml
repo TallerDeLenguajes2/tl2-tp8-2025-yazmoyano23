@@ -17,6 +17,7 @@
             <th>Cantidad</th>
             <th>Precio Unitario</th>
             <th>Subtotal</th>
+            <th>Acciones</th>
         </tr>
     </thead>
     <tbody>
@@ -27,6 +28,14 @@
                 <td>@detalle.Cantidad</td>
                 <td>@detalle.Producto.Precio</td>
                 <td>@(detalle.Cantidad * detalle.Producto.Precio)</td>
+                <td>
+                    <a asp-action="QuitarProducto"
+                       asp-route-idPresupuesto="@Model.IdPresupuesto"
+                       asp-route-idProducto="@detalle.Producto.IdProducto"
+                       class="btn btn-danger btn-sm">
+                        Quitar
+                    </a>
+                </td>
             </tr>
         }
     </tbody>

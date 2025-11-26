@@ -210,4 +210,20 @@ using System.Timers;
             conexion.Close();                    
         }
     }
+
+    public void EliminarProductoDeDetalle( int idPresupuesto, int idProducto)
+    {
+        using (SqliteConnection conexion = new SqliteConnection(cadenaConexion))
+        {
+            conexion.Open();
+            string consulta = "DELETE FROM PresupuestosDetalle WHERE idPresupuesto = @idPres AND idProducto = @idProd";
+
+            using var deleteCmd = new SqliteCommand(consulta, conexion);
+            deleteCmd.Parameters.Add(new SqliteParameter("@idPres",idPresupuesto));
+            deleteCmd.Parameters.Add(new SqliteParameter("@idProd",idProducto));
+
+            deleteCmd.ExecuteNonQuery();
+            conexion.Close();
+        }
+    }
 }
